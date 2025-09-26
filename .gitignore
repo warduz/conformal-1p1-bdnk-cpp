@@ -1,0 +1,9 @@
+*.txt
+*.out
+*.json
+*.png
+*.gif
+*.jpg
+
+.vscode/
+build/
