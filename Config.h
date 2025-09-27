@@ -56,6 +56,7 @@ class Config {
     void set_hydro_params(double _Neta, double _ep_coeff);
     void set_initial_condition(int problem, double _epL, double _epR, double _vL, double _vR, double _Delta);
     void set_spacetime();
+    void set_hydro_frame(bool _choose_cplus_a1, int _frame);
     void set_save_dir(const String& _save_dir, bool _save_in_unique_dir);
 };
 

@@ -25,21 +25,6 @@ Config::Config(const String& args)  {
     double _vR { tbl["params"]["vR"].value_or(0.) };
     double _Delta { tbl["params"]["Delta"].value_or(1.0) };
 
-    // std::cout <<
-    //   _save_in_unique_dir << '\n' <<
-    //   _problem << '\n' <<
-    //   _x0 << '\n' <<
-    //   _cCFL << '\n' <<
-    //   _hx << '\n' <<
-    //   _ht << '\n' <<
-    //   _choose_ht << '\n' <<
-    //   _Nx << '\n' <<
-    //   _theta_kt << '\n' <<
-    //   _Neta << '\n' <<
-    //   _ep_coeff << '\n' <<
-    //   _choose_cplus_a1 << '\n' <<
-    //   _frame << '\n';
-
     int _Nt { static_cast<int>(_Nx/_ht) };
     int _tmod { static_cast<int>(1./_ht) };
 
@@ -47,6 +32,7 @@ Config::Config(const String& args)  {
     set_numerical_params(_x0, _cCFL, _hx, _ht, _choose_ht, _Nx, _Nt, _tmod, _theta_kt);
     set_hydro_params(_Neta, _ep_coeff);
     set_initial_condition(_problem, _epL, _epR, _vL, _vR, _Delta);
+    set_hydro_frame(_choose_cplus_a1, _frame);
     set_spacetime();
     set_save_dir(_save_dir, _save_in_unique_dir);
   } catch (const toml::parse_error& err) {
@@ -102,6 +88,52 @@ void Config::set_initial_condition(int problem, double _epL, double _epR, double
   vL = _vL;
   vR = _vR;
   Delta = _Delta;
+}
+
+void Config::set_hydro_frame(bool _choose_cplus_a1, int _frame) {
+  if (_choose_cplus_a1) {
+    switch (_frame) {
+      case 1:
+        cplus = 0.9999;
+        a1 = 25./4.;
+        // a2 = 25./7.;
+        break;
+      case 2:
+        cplus = 0.85;
+        a1 = 25./2.;
+        // a2 = 25./3.;
+        break;
+      case 3:
+        cplus = 0.74;
+        a1 = 25;
+        // a2 = 25;
+        break;
+      default:
+        throw std::runtime_error("Invalid frame.");
+    }
+    a2 = 12. * a1 * cplus*cplus / (-4. + a1 - 6. * a1 * cplus*cplus + 9.*a1 * cplus*cplus*cplus*cplus);
+  } else {
+    switch (_frame) {
+      case 1:
+        // cplus = 1.0;
+        a1 = 25./4.;
+        a2 = 25./7.;
+        break;
+      case 2:
+        // cplus = 0.85;
+        a1 = 25./2.;
+        a2 = 25./3.;
+        break;
+      case 3:
+        // cplus = 0.74;
+        a1 = 25;
+        a2 = 25;
+        break;
+      default:
+        throw std::runtime_error("Invalid frame.");
+    }
+    cplus = std::sqrt(( a1 * (2+a2) + 2* std::sqrt(a1 * (a1 + a1*a2 + a2*a2)) ) / (3*a1*a2));
+  }
 }
 
 void Config::set_spacetime() {
