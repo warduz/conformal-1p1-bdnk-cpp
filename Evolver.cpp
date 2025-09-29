@@ -381,7 +381,7 @@ Grid Evolver::get_tau_ep(const Grid& T, double a1, double etaovs) const {
 
 
 Grid Evolver::get_tau_Q(const Grid& T, double a2, double etaovs) const {
-  return 3. * a2 * etaovs / T;
+  return a2 * etaovs / T;
 }
 
 
