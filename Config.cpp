@@ -78,7 +78,7 @@ void Config::set_hydro_params(double _Neta, double _ep_coeff) {
 
   bulk_scalar = 0.;
   etaovs = Neta * 1./(4. * M_PI);
-  shear_coeff =  4./3. * pow(ep_coeff, 0.5) * etaovs;
+  shear_coeff =  4./3. * ep_coeff * etaovs;
   cs = 1.0 / std::sqrt(3.0);
 }
 

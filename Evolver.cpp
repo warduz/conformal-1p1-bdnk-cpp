@@ -64,31 +64,31 @@ void Evolver::run() {
 
   String unique {""};
 
-  if (!config.save_in_unique_dir) unique = config.unique;
+  if (!config.save_in_unique_dir) unique = "_" + config.unique;
 
-  std::ofstream t_file(config.save_dir + "/t_" + unique + ".txt");
-  std::ofstream all_ts_file(config.save_dir + "/all_ts_" + unique + ".txt"); all_ts_file << ts;
-  std::ofstream x_file(config.save_dir + "/x_" + unique + ".txt"); x_file << x;
+  std::ofstream t_file(config.save_dir + "/t" + unique + ".txt");
+  std::ofstream all_ts_file(config.save_dir + "/all_ts" + unique + ".txt"); all_ts_file << ts;
+  std::ofstream x_file(config.save_dir + "/x" + unique + ".txt"); x_file << x;
 
-  std::ofstream T00_file(config.save_dir + "/T00_" + unique + ".txt");
-  std::ofstream T01_file(config.save_dir + "/T0x_" + unique + ".txt");
-  std::ofstream C_0_file(config.save_dir + "/C_0_" + unique + ".txt");
-  std::ofstream C_1_file(config.save_dir + "/C_1_" + unique + ".txt");
-  std::ofstream X_xx_file(config.save_dir + "/X_xx_" + unique + ".txt");
-  std::ofstream X_x0_file(config.save_dir + "/X_x0_" + unique + ".txt");
-  std::ofstream Txx_file(config.save_dir + "/Txx_" + unique + ".txt");
-  std::ofstream X_00_file(config.save_dir + "/X_00_" + unique + ".txt");
-  std::ofstream X_0x_file(config.save_dir + "/X_0x_" + unique + ".txt");
-  std::ofstream T_file(config.save_dir + "/T_" + unique + ".txt");
-  std::ofstream depdx_file(config.save_dir + "/depdx_" + unique + ".txt");
-  std::ofstream ep_file(config.save_dir + "/ep_" + unique + ".txt");
-  std::ofstream v_file(config.save_dir + "/v_" + unique + ".txt");
-  std::ofstream dvdx_file(config.save_dir + "/dvdx_" + unique + ".txt");
-  std::ofstream P_file(config.save_dir + "/P_" + unique + ".txt");
-  std::ofstream Kn_u_file(config.save_dir + "/Kn_u_" + unique + ".txt");
-  std::ofstream Kn_T_file(config.save_dir + "/Kn_T_" + unique + ".txt");
-  std::ofstream Anorm_file(config.save_dir + "/Anorm_" + unique + ".txt");
-  std::ofstream Qnorm_sqrt_file(config.save_dir + "/Qnorm_sqrt_" + unique + ".txt");
+  std::ofstream T00_file(config.save_dir + "/T00" + unique + ".txt");
+  std::ofstream T01_file(config.save_dir + "/T0x" + unique + ".txt");
+  std::ofstream C_0_file(config.save_dir + "/C_0" + unique + ".txt");
+  std::ofstream C_1_file(config.save_dir + "/C_1" + unique + ".txt");
+  std::ofstream X_xx_file(config.save_dir + "/X_xx" + unique + ".txt");
+  std::ofstream X_x0_file(config.save_dir + "/X_x0" + unique + ".txt");
+  std::ofstream Txx_file(config.save_dir + "/Txx" + unique + ".txt");
+  std::ofstream X_00_file(config.save_dir + "/X_00" + unique + ".txt");
+  std::ofstream X_0x_file(config.save_dir + "/X_0x" + unique + ".txt");
+  std::ofstream T_file(config.save_dir + "/T" + unique + ".txt");
+  std::ofstream depdx_file(config.save_dir + "/depdx" + unique + ".txt");
+  std::ofstream ep_file(config.save_dir + "/ep" + unique + ".txt");
+  std::ofstream v_file(config.save_dir + "/v" + unique + ".txt");
+  std::ofstream dvdx_file(config.save_dir + "/dvdx" + unique + ".txt");
+  std::ofstream P_file(config.save_dir + "/P" + unique + ".txt");
+  std::ofstream Kn_u_file(config.save_dir + "/Kn_u" + unique + ".txt");
+  std::ofstream Kn_T_file(config.save_dir + "/Kn_T" + unique + ".txt");
+  std::ofstream Anorm_file(config.save_dir + "/Anorm" + unique + ".txt");
+  std::ofstream Qnorm_sqrt_file(config.save_dir + "/Qnorm_sqrt" + unique + ".txt");
 
   for (int nt=0; nt<=ts.size(); ++nt) {
     /*************************************************************/
