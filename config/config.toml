@@ -1,5 +1,5 @@
 [params]
-save_dir="output"
+save_dir="../output"
 save_in_unique_dir=true
 problem=0
 x0=true

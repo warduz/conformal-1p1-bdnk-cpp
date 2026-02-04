@@ -3,7 +3,7 @@
 
 #include "preamble.h"
 #include "util.h"
-#include "toml.hpp"
+#include "../third_party/toml.hpp"
 
 class Config {
   public:
